@@ -1,0 +1,1 @@
+Archivo Readme en el que muestren las opciones de compilación y de corrida (pueden realizar la compilación en gcc o icc). En ese archivo deben colocar como se ejecuta en local y como se ejecuta en GUANE-1.
