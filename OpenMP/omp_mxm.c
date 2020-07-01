@@ -66,9 +66,9 @@ int main ( int argc, char *argv[] )
   27 Juin 2020 by Julián Eduardo Villamizar Peña,
   Universidad Industrial de Santander,
   julianeduardovillamizarpena_14021994@outlook.com,
-  This OpenMP Modification makes a parallelization of the original Code taking
-  into account some modifications proposed by a parallelization course available
-  on
+  This OpenMP Modification makes a parallelization of
+  the original Code taking into account some modifications
+  proposed by a parallelization course available on.
 */
 {
   double *b;
@@ -81,6 +81,7 @@ int main ( int argc, char *argv[] )
   int n3;
   int seed;
   double time_estimate;
+  int thread_num;
   int h;
   h=omp_get_num_threads();
   printf("\nNumero de threads: %d\n", h);
@@ -144,6 +145,12 @@ int main ( int argc, char *argv[] )
   printf ( "  Number of floating point operations = %d\n", flop_count );
   time_estimate = ( double ) ( flop_count ) / 2.6E+09;
   printf ( "  Estimated CPU time is %f seconds.\n", time_estimate );
+
+  thread_num = omp_get_max_threads ( );
+
+  printf ( "\n" );
+  printf ( "  The number of processors available = %d\n", omp_get_num_procs ( ) );
+  printf ( "  The number of threads available    = %d\n", thread_num );
 /*
   Set B and C.
 */
@@ -384,20 +391,33 @@ double mxm_ijk ( int n1, int n2, int n3, double b[], double c[] )
     Output, double MXM_IJK, the elapsed CPU time.
 */
 {
+
+
+/* The way most languages store multi-dimensional arrays is by doing a conversion
+like the following: If matrix has size, n by m [i.e. i goes from 0 to (n-1) and
+j from 0 to (m-1) ], then: matrix[ i ][ j ] = array[ i*m + j ]. So its just like
+a number system of base 'n'. Note that the size of the last dimension doesn't matter.
+*/
+
+/*Directly applying the mathematical definition of matrix multiplication gives
+an algorithm that takes time on the order of n3 */
+
+
   double *a;
   double cpu_seconds;
   int i;
   int j;
   int k;
 
-  a = ( double * ) malloc ( n1 * n3 * sizeof ( double ) ); //Assignement of memory taking into account quantity of elements
+  a = ( double * ) malloc ( n1 * n3 * sizeof ( double ) ); //Assignement of memory
+  //taking into account quantity of elements
 
   for ( j = 0; j < n3; j++ )
   {
     for ( i = 0; i < n1; i++ )
     {
       a[i+j*n1] = 0.0;
-      printf("mira lo que hay: %f \n", a[i+j*n1]);
+      /*printf("mira lo que hay: %f \n", a[i+j*n1]);*/
     }
   }
 
@@ -410,7 +430,7 @@ double mxm_ijk ( int n1, int n2, int n3, double b[], double c[] )
       for ( k = 0; k < n2; k++ )
       {
         a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
-        printf("mira el resultado de A tras multiplicar: %f \n", a[i+j*n1]);
+        /*printf("mira el resultado de A tras multiplicar: %f \n", a[i+j*n1]);*/
       }
     }
   }
