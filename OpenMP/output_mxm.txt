@@ -1,0 +1,29 @@
+02 July 2020 09:02:34 AM
+
+MXM:
+  C version
+  Compute matrix-matrix product A = B * C
+
+  Matrix B is 45000 by 45000
+  Matrix C is 45000 by 45000
+  Matrix A will be 45000 by 45000
+
+  Number of floating point operations = 1652728832
+  Estimated CPU time is 0.635665 seconds.
+
+  The number of processors available = 24
+  The number of threads available    = 24
+
+  Method     Cpu Seconds       MegaFlopS
+  ------  --------------  --------------
+  IJK           0.090000    18363.653689
+  IKJ           0.040000    41318.220800
+  JIK           0.080000    20659.110400
+  JKI           0.050000    33054.576640
+  KIJ           0.050000    33054.576640
+  KJI           0.050000    33054.576640
+
+MXM:
+  Normal end of execution.
+
+02 July 2020 09:04:03 AM
