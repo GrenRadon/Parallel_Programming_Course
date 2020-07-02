@@ -1,13 +1,15 @@
 ## Local execution steps:
 
-Firstly, we must launch our compiler using the gcc instruction as follow below: - gcc -fopenmp omp_mxm.c -o /Extra/executions/SalidaXXX
+Firstly, we must launch our compiler using the gcc instruction as follow below:
+
+- gcc -fopenmp omp_mxm.c -o /Extra/executions/SalidaXXX
 
 Where:
 
-* gcc-> Which is our compiler version of C language.
+* gcc-> Our compiler version of C language.
 * fopenmp ->A flag provided to load correctly openmp libraries needed to our purposes.
-* SalidaXXX -> Which is our output once we compile correctly our code. XXX represents the number of compilation we are. 
-* omp_mxm.c-> Our implementation using omp directives.
+* SalidaXXX -> An output once we compile correctly our code. XXX represents the number of compilation we are. 
+* omp_mxm.c-> An implementation using omp directives.
 
 Lastly, once we get our outcome, it's just to execute it by typing the next line in the relative path: 
 ./SalidaXX
@@ -25,7 +27,7 @@ We will be able to improve the Pragmas regions by using numerical methods or alg
 
 ## Additional information:
 
-We used as tutorial guide the [OpenMP online organization page](https://computing.llnl.gov/tutorials/openMP/#ParallelRegion). This source was truly important at the moment of building our implementation in OpenMP. 
+We used as tutorial guide the [OpenMP online page](https://computing.llnl.gov/tutorials/openMP/#ParallelRegion). This source was truly important at the moment of building our implementation in OpenMP. 
 
 
 
