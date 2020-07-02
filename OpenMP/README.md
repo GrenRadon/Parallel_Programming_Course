@@ -1,3 +1,7 @@
+## Folder description:
+
+Here we can find 4 different files and a subfolder which contains its own description file. Mxm.sbatch is our shell and slurm file which manage the reserving resourse part on Guane. omp_mxm.c is our modification of a matrix mutiplication program. output_mxm.txt is our outcome after executing the implementation code in GUANE with n1=45000, n2=45000 and n3=45000 as arguments. 
+
 ## Local execution steps:
 
 Firstly, we must launch our compiler using the gcc instruction as follow below:
@@ -19,7 +23,7 @@ Lastly, once we get our outcome, it's just to execute it by typing the next line
 
 To execute properly our code in a Guane node we must log in first, once inside the front-end, we gotta enter to a guane node assigned randomly by typing "ssh guane".
 
-All setting are contained in the sbatch file so it's just to launch it by typing "sbatch mxm.sbatch". It's extremely necessary to note that we have to modify the .sbatch file at the very end since according to the scaled part,we can change it by changing the arguments, some examples of this are: "./SALIDA 100 100 100","./SALIDA 200 200 200", "./SALIDA 10000 10000 10000", "./SALIDA 30000 30000 30000"
+All settings are contained in the sbatch file so it's just to launch it by typing "sbatch mxm.sbatch". It's extremely necessary to note that we have to modify the .sbatch file at the very end since according to the scaled part,we can change it by changing the arguments, some examples of this are: "./SALIDA 100 100 100","./SALIDA 200 200 200", "./SALIDA 10000 10000 10000", "./SALIDA 30000 30000 30000"
 
 ## Future improvements: 
 
