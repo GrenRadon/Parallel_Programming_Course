@@ -19,11 +19,11 @@ Lastly, once we get our outcome, it's just to execute it by typing the next line
 
 To execute properly our code in a Guane node we must log in first, once inside the front-end, we gotta enter to a guane node assigned randomly by typing "ssh guane".
 
-All setting are contained in the sbatch file so it's just to launch it by typing"sbatch mxm.sbatch". It's extremely necessary to note that we have to modify the .sbatch file at the very end since according to the scaled part,we can change it by changing the arguments, some examples of this are: "./SALIDA 100 100 100", "./SALIDA 30000 30000 30000"
+All setting are contained in the sbatch file so it's just to launch it by typing "sbatch mxm.sbatch". It's extremely necessary to note that we have to modify the .sbatch file at the very end since according to the scaled part,we can change it by changing the arguments, some examples of this are: "./SALIDA 100 100 100","./SALIDA 200 200 200", "./SALIDA 10000 10000 10000", "./SALIDA 30000 30000 30000"
 
 ## Future improvements: 
 
-We will be able to improve the Pragmas regions by using numerical methods or algebra techniques. For more information visit the next [wikipedia's link](https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm).
+We will be able to improve the Pragma regions by using numerical methods or algebra techniques. For more information visit the next [wikipedia's link](https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm).
 
 ## Additional information:
 
