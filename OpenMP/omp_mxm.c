@@ -2,7 +2,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <time.h>
-# define CHUNKSIZE 700
+# define CHUNKSIZE 700 //here we add a global variable 
 
 
 
