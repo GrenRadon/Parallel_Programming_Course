@@ -300,6 +300,7 @@ double cpu_time ( void )
   Parameters:
 
     Output, double CPU_TIME, the current reading of the CPU clock, in seconds.
+
 */
 {
   double value;
@@ -391,9 +392,20 @@ double mxm_ijk ( int n1, int n2, int n3, double b[], double c[] )
     Input, double B[N1*N2], C[N2*N3], the factor matrices.
 
     Output, double MXM_IJK, the elapsed CPU time.
+
+  OpenMP Modification:
+    02 Juib 2020 by Julián Eduardo Villamizar Peña, Universidad Industrial de Santander
+    e-mail:julianeduardovillamizarpena_1402994@outlook.com
+    This OpenMP Modification makes a parallelization of the original Code by adding
+    chunksize from a global variable, at the same time we add a pragma workflow
+    which contain a region with a,b,c and chunk as shared variables among available
+    threads and i,j,k,n1,n2,n3 variables as private because are independant of every loops
+    taking into account we do not have to acess multiple times to memory for the Assignement
+    of values inside the A Matrix.
 */
 {
 
+//Comments---------------------------------------------------------------------------
 
 /* The way most languages store multi-dimensional arrays is by doing a conversion
 like the following: If matrix has size, n by m [i.e. i goes from 0 to (n-1) and
@@ -404,6 +416,7 @@ a number system of base 'n'. Note that the size of the last dimension doesn't ma
 /*Directly applying the mathematical definition of matrix multiplication gives
 an algorithm that takes time on the order of n3 */
 
+//------------------------------------------------------------------------------------
 
   double *a;
   double cpu_seconds;
@@ -478,6 +491,16 @@ double mxm_ikj ( int n1, int n2, int n3, double b[], double c[] )
     Input, double B[N1*N2], C[N2*N3], the factor matrices.
 
     Output, double MXM_IJK, the elapsed CPU time.
+
+    OpenMP Modification:
+      02 Juib 2020 by Julián Eduardo Villamizar Peña, Universidad Industrial de Santander
+      e-mail:julianeduardovillamizarpena_1402994@outlook.com
+      This OpenMP Modification makes a parallelization of the original Code by adding
+      chunksize from a global variable, at the same time we add a pragma workflow
+      which contain a region with a,b,c and chunk as shared variables among available
+      threads and i,j,k,n1,n2,n3 variables as private because are independant of every loops
+      taking into account we do not have to acess multiple times to memory for the Assignement
+      of values inside the A Matrix.
 */
 {
   double *a;
@@ -549,6 +572,16 @@ double mxm_jik ( int n1, int n2, int n3, double b[], double c[] )
     Input, double B[N1*N2], C[N2*N3], the factor matrices.
 
     Output, double MXM_IJK, the elapsed CPU time.
+
+    OpenMP Modification:
+      02 Juib 2020 by Julián Eduardo Villamizar Peña, Universidad Industrial de Santander
+      e-mail:julianeduardovillamizarpena_1402994@outlook.com
+      This OpenMP Modification makes a parallelization of the original Code by adding
+      chunksize from a global variable, at the same time we add a pragma workflow
+      which contain a region with a,b,c and chunk as shared variables among available
+      threads and i,j,k,n1,n2,n3 variables as private because are independant of every loops
+      taking into account we do not have to acess multiple times to memory for the Assignement
+      of values inside the A Matrix.
 */
 {
   double *a;
@@ -621,6 +654,16 @@ double mxm_jki ( int n1, int n2, int n3, double b[], double c[] )
     Input, double B[N1*N2], C[N2*N3], the factor matrices.
 
     Output, double MXM_IJK, the elapsed CPU time.
+
+    OpenMP Modification:
+      02 Juib 2020 by Julián Eduardo Villamizar Peña, Universidad Industrial de Santander
+      e-mail:julianeduardovillamizarpena_1402994@outlook.com
+      This OpenMP Modification makes a parallelization of the original Code by adding
+      chunksize from a global variable, at the same time we add a pragma workflow
+      which contain a region with a,b,c and chunk as shared variables among available
+      threads and i,j,k,n1,n2,n3 variables as private because are independant of every loops
+      taking into account we do not have to acess multiple times to memory for the Assignement
+      of values inside the A Matrix.
 */
 {
   double *a;
@@ -693,6 +736,16 @@ double mxm_kij ( int n1, int n2, int n3, double b[], double c[] )
     Input, double B[N1*N2], C[N2*N3], the factor matrices.
 
     Output, double MXM_IJK, the elapsed CPU time.
+
+    OpenMP Modification:
+      02 Juib 2020 by Julián Eduardo Villamizar Peña, Universidad Industrial de Santander
+      e-mail:julianeduardovillamizarpena_1402994@outlook.com
+      This OpenMP Modification makes a parallelization of the original Code by adding
+      chunksize from a global variable, at the same time we add a pragma workflow
+      which contain a region with a,b,c and chunk as shared variables among available
+      threads and i,j,k,n1,n2,n3 variables as private because are independant of every loops
+      taking into account we do not have to acess multiple times to memory for the Assignement
+      of values inside the A Matrix.
 */
 {
   double *a;
@@ -765,6 +818,16 @@ double mxm_kji ( int n1, int n2, int n3, double b[], double c[] )
     Input, double B[N1*N2], C[N2*N3], the factor matrices.
 
     Output, double MXM_IJK, the elapsed CPU time.
+
+    OpenMP Modification:
+      02 Juib 2020 by Julián Eduardo Villamizar Peña, Universidad Industrial de Santander
+      e-mail:julianeduardovillamizarpena_1402994@outlook.com
+      This OpenMP Modification makes a parallelization of the original Code by adding
+      chunksize from a global variable, at the same time we add a pragma workflow
+      which contain a region with a,b,c and chunk as shared variables among available
+      threads and i,j,k,n1,n2,n3 variables as private because are independant of every loops
+      taking into account we do not have to acess multiple times to memory for the Assignement
+      of values inside the A Matrix. 
 */
 {
   double *a;

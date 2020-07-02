@@ -1,7 +1,4 @@
-Archivo Readme en el que muestren las opciones de compilación y de corrida (pueden realizar la compilación en gcc o icc). En ese archivo deben colocar como se ejecuta en local y como se ejecuta en GUANE-1.
-
-
-Local Execution steps:
+## **Local Execution steps:**
 
 Firstly, we must launch our compiler using the gcc instruction as follow below: gcc -fopenmp omp_mxm.c -o SalidaXXX
 
