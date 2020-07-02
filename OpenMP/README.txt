@@ -244,4 +244,9 @@ Matrix B is 2000 by 2000
 
 MXM:
   Normal end of execution.
-   
+
+GUANE1 Execution's steps:
+
+Firstly we gotta launch our BATCH script as follow:
+
+sbatch script.sh   
