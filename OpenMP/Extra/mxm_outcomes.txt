@@ -224,6 +224,52 @@ Matrix B is 2000 by 2000
 MXM:
   Normal end of execution.
 
-Guane outcomes:
+Parallelized guane outcomes:
+
+Matrix B is 40000 by 40000
+  Matrix C is 40000 by 40000
+  Matrix A will be 40000 by 40000
+
+  Number of floating point operations = 1384644608
+  Estimated CPU time is 0.532556 seconds.
+
+  The number of processors available = 24
+  The number of threads available    = 24
+
+  Method     Cpu Seconds       MegaFlopS
+  ------  --------------  --------------
+  IJK           0.090000    15384.940089
+  IKJ           0.050000    27692.892160
+  JIK           0.050000    27692.892160
+  JKI           0.080000    17308.057600
+  KIJ           0.050000    27692.892160
+  KJI           0.050000    27692.892160
+
+MXM:
+  Normal end of execution.
+
+Matrix B is 45000 by 45000
+  Matrix C is 45000 by 45000
+  Matrix A will be 45000 by 45000
+
+  Number of floating point operations = 1652728832
+  Estimated CPU time is 0.635665 seconds.
+
+  The number of processors available = 24
+  The number of threads available    = 24
+
+  Method     Cpu Seconds       MegaFlopS
+  ------  --------------  --------------
+  IJK           0.090000    18363.653689
+  IKJ           0.050000    33054.576640
+  JIK           0.050000    33054.576640
+  JKI           0.090000    18363.653689
+  KIJ           0.010000   165272.883200
+  KJI           0.010000   165272.883200
+
+MXM:
+  Normal end of execution.
+
+
 
 
