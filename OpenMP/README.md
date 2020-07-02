@@ -33,6 +33,6 @@ We will be able to improve the Pragma regions by using numerical methods or alge
 
 We used as tutorial guide the [OpenMP online page](https://computing.llnl.gov/tutorials/openMP/#ParallelRegion). This source was truly important at the moment of building our implementation in OpenMP. 
 
-For correctly execute the implementation code with the resources nedeed in guane we used the slurm guide provided by this [link](https://slurm.schedmd.com/documentation.html)
+For correctly execute the implementation code with the resources nedeed in guane , we used the slurm guide provided by this [link](https://slurm.schedmd.com/documentation.html)
 
 
