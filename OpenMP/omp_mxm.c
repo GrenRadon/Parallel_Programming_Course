@@ -85,8 +85,6 @@ int main ( int argc, char *argv[] )
   double time_estimate;
   int thread_num;
   int h;
-  h=omp_get_num_threads();
-  printf("\nNumero de threads: %d\n", h);
 
   timestamp ( );
 
@@ -150,6 +148,7 @@ int main ( int argc, char *argv[] )
 
   thread_num = omp_get_max_threads ( );
 
+  //this is a modification done for getting meta info about threads
   printf ( "\n" );
   printf ( "  The number of processors available = %d\n", omp_get_num_procs ( ) );
   printf ( "  The number of threads available    = %d\n", thread_num );
@@ -827,7 +826,7 @@ double mxm_kji ( int n1, int n2, int n3, double b[], double c[] )
       which contain a region with a,b,c and chunk as shared variables among available
       threads and i,j,k,n1,n2,n3 variables as private because are independant of every loops
       taking into account we do not have to acess multiple times to memory for the Assignement
-      of values inside the A Matrix. 
+      of values inside the A Matrix.
 */
 {
   double *a;
