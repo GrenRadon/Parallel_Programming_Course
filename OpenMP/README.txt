@@ -1,4 +1,4 @@
-## **Local Execution steps:**
+## Local Execution steps:
 
 Firstly, we must launch our compiler using the gcc instruction as follow below: gcc -fopenmp omp_mxm.c -o SalidaXXX
 
