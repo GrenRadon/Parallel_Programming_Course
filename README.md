@@ -8,8 +8,9 @@
 
 ## Problem description:
 
-* Matrix-Matrix Multiplication Timings
-MXM, a C program which sets up a matrix-matrix multiplication problem A = B * C, and carries it out using it
+* Matrix-Matrix Multiplication Timings (MXM)
+
+A C program which sets up a matrix-matrix multiplication problem A = B * C, and carries it out using it
 
 	- Nested FOR I, J, K loops;
 	- Nested FOR I, K, J loops;
@@ -30,4 +31,4 @@ where:
 - n2 is the number of columns in B and rows in C.
 - n3 is the number of columns in C;
 
-The scope to achieved in this project was to implement a parallelized version of the previous explained C code by using OpenMP directives. 
+The scope achieved in this project was to implement a parallelized version of the previous explained C code by using OpenMP directives. Pragma regions were correctly placed taking into account concepts already seen at HPC instruction.  
