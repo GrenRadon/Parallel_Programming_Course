@@ -1,8 +1,10 @@
 # IntroPP2111628
 
-** Institution's name: ** Universidad Industrial de Santander
-** Student: ** Julian Eduardo Villamizar Peña
-** E-mail: ** julianeduardovillamizarpena@outlook.com
+**Institution's name:** Universidad Industrial de Santander
+
+**Student:** Julian Eduardo Villamizar Peña
+
+**E-mail:** julianeduardovillamizarpena@outlook.com
 
 ## Problem description:
 
