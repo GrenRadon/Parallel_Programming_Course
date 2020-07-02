@@ -2,6 +2,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <time.h>
+# define CHUNKSIZE 700
+
 
 
 //declaration of functions-----------------------------------------------------
@@ -405,35 +407,40 @@ an algorithm that takes time on the order of n3 */
 
   double *a;
   double cpu_seconds;
-  int i;
-  int j;
-  int k;
-
+  int i,j,k;
+  int chunk;
+  chunk=700;
   a = ( double * ) malloc ( n1 * n3 * sizeof ( double ) ); //Assignement of memory
   //taking into account quantity of elements
 
+  //Initialización of values of each element of A matrix.
   for ( j = 0; j < n3; j++ )
   {
     for ( i = 0; i < n1; i++ )
     {
       a[i+j*n1] = 0.0;
-      /*printf("mira lo que hay: %f \n", a[i+j*n1]);*/
+
     }
   }
 
   cpu_seconds = cpu_time ( );
 
-  for ( i = 0; i < n1; i++ )
-  {
-    for ( j = 0; j < n3; j++ )
-    {
-      for ( k = 0; k < n2; k++ )
-      {
-        a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
-        /*printf("mira el resultado de A tras multiplicar: %f \n", a[i+j*n1]);*/
-      }
+  #pragma omp parallel shared(a,b,c,chunk) private(i,j,k,n1,n2,n3)
+     {
+
+        for ( i = 0; i < n1; i++ )
+        {
+          for ( j = 0; j < n3; j++ )
+          {
+            #pragma omp for schedule(dynamic,chunk) ordered
+            for ( k = 0; k < n2; k++ )
+            {
+              a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+              /*printf("mira el resultado de A tras multiplicar: %f \n", a[i+j*n1]);*/
+            }
+          }
+        }
     }
-  }
 
   cpu_seconds = cpu_time ( ) - cpu_seconds;
 
@@ -475,12 +482,13 @@ double mxm_ikj ( int n1, int n2, int n3, double b[], double c[] )
 {
   double *a;
   double cpu_seconds;
-  int i;
-  int j;
-  int k;
+  int i,j,k;
+  int chunk;
+  chunk=CHUNKSIZE;
 
   a = ( double * ) malloc ( n1 * n3 * sizeof ( double ) );
 
+  //Initialización of values of each element of A matrix.
   for ( j = 0; j < n3; j++ )
   {
     for ( i = 0; i < n1; i++ )
@@ -491,17 +499,20 @@ double mxm_ikj ( int n1, int n2, int n3, double b[], double c[] )
 
   cpu_seconds = cpu_time ( );
 
-  for ( i = 0; i < n1; i++ )
-  {
-    for ( k = 0; k < n2; k++ )
-    {
-      for ( j = 0; j < n3; j++ )
-      {
-        a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+  #pragma omp parallel shared(a,b,c,chunk) private(i,j,k,n1,n2,n3)
+     {
+        for ( i = 0; i < n1; i++ )
+        {
+          for ( k = 0; k < n2; k++ )
+          {
+            #pragma omp for schedule(dynamic,chunk) ordered
+            for ( j = 0; j < n3; j++ )
+            {
+              a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+            }
+          }
+        }
       }
-    }
-  }
-
   cpu_seconds = cpu_time ( ) - cpu_seconds;
 
   free ( a );
@@ -542,12 +553,13 @@ double mxm_jik ( int n1, int n2, int n3, double b[], double c[] )
 {
   double *a;
   double cpu_seconds;
-  int i;
-  int j;
-  int k;
+  int i,j,k;
+  int chunk;
+  chunk=CHUNKSIZE;
 
   a = ( double * ) malloc ( n1 * n3 * sizeof ( double ) );
 
+  //Initialización of values of each element of A matrix.
   for ( j = 0; j < n3; j++ )
   {
     for ( i = 0; i < n1; i++ )
@@ -558,16 +570,20 @@ double mxm_jik ( int n1, int n2, int n3, double b[], double c[] )
 
   cpu_seconds = cpu_time ( );
 
-  for ( j = 0; j < n3; j++ )
-  {
-    for ( i = 0; i < n1; i++ )
-    {
-      for ( k = 0; k < n2; k++ )
-      {
-        a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+  #pragma omp parallel shared(a,b,c,chunk) private(i,j,k,n1,n2,n3)
+     {
+        for ( j = 0; j < n3; j++ )
+        {
+          for ( i = 0; i < n1; i++ )
+          {
+            #pragma omp for schedule(dynamic,chunk) ordered
+            for ( k = 0; k < n2; k++ )
+            {
+              a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+            }
+          }
+        }
       }
-    }
-  }
 
   cpu_seconds = cpu_time ( ) - cpu_seconds;
 
@@ -609,12 +625,13 @@ double mxm_jki ( int n1, int n2, int n3, double b[], double c[] )
 {
   double *a;
   double cpu_seconds;
-  int i;
-  int j;
-  int k;
+  int i,j,k;
+  int chunk;
+  chunk=CHUNKSIZE;
 
   a = ( double * ) malloc ( n1 * n3 * sizeof ( double ) );
 
+  //Initialización of values of each element of A matrix.
   for ( j = 0; j < n3; j++ )
   {
     for ( i = 0; i < n1; i++ )
@@ -625,16 +642,20 @@ double mxm_jki ( int n1, int n2, int n3, double b[], double c[] )
 
   cpu_seconds = cpu_time ( );
 
-  for ( j = 0; j < n3; j++ )
-  {
-    for ( k = 0; k < n2; k++ )
-    {
-      for ( i = 0; i < n1; i++ )
-      {
-        a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+  #pragma omp parallel shared(a,b,c,chunk) private(i,j,k,n1,n2,n3)
+     {
+        for ( j = 0; j < n3; j++ )
+        {
+          for ( k = 0; k < n2; k++ )
+          {
+            #pragma omp for schedule(dynamic,chunk) ordered
+            for ( i = 0; i < n1; i++ )
+            {
+              a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+            }
+          }
+        }
       }
-    }
-  }
 
   cpu_seconds = cpu_time ( ) - cpu_seconds;
 
@@ -676,12 +697,13 @@ double mxm_kij ( int n1, int n2, int n3, double b[], double c[] )
 {
   double *a;
   double cpu_seconds;
-  int i;
-  int j;
-  int k;
+  int i,j,k;
+  int chunk;
+  chunk=CHUNKSIZE;
 
   a = ( double * ) malloc ( n1 * n3 * sizeof ( double ) );
 
+  //Initialización of values of each element of A matrix.
   for ( j = 0; j < n3; j++ )
   {
     for ( i = 0; i < n1; i++ )
@@ -692,16 +714,20 @@ double mxm_kij ( int n1, int n2, int n3, double b[], double c[] )
 
   cpu_seconds = cpu_time ( );
 
-  for ( k = 0; k < n2; k++ )
-  {
-    for ( i = 0; i < n1; i++ )
-    {
-      for ( j = 0; j < n3; j++ )
-      {
-        a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+  #pragma omp parallel shared(a,b,c,chunk) private(i,j,k,n1,n2,n3)
+     {
+        for ( k = 0; k < n2; k++ )
+        {
+          for ( i = 0; i < n1; i++ )
+          {
+            #pragma omp for schedule(dynamic,chunk) ordered
+            for ( j = 0; j < n3; j++ )
+            {
+              a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+            }
+          }
+        }
       }
-    }
-  }
 
   cpu_seconds = cpu_time ( ) - cpu_seconds;
 
@@ -743,12 +769,13 @@ double mxm_kji ( int n1, int n2, int n3, double b[], double c[] )
 {
   double *a;
   double cpu_seconds;
-  int i;
-  int j;
-  int k;
+  int i,j,k;
+  int chunk;
+  chunk=CHUNKSIZE;
 
   a = ( double * ) malloc ( n1 * n3 * sizeof ( double ) );
 
+  //Initialización of values of each element of A matrix.
   for ( j = 0; j < n3; j++ )
   {
     for ( i = 0; i < n1; i++ )
@@ -759,16 +786,20 @@ double mxm_kji ( int n1, int n2, int n3, double b[], double c[] )
 
   cpu_seconds = cpu_time ( );
 
-  for ( k = 0; k < n2; k++ )
-  {
-    for ( j = 0; j < n3; j++ )
-    {
-      for ( i = 0; i < n1; i++ )
-      {
-        a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+  #pragma omp parallel shared(a,b,c,chunk) private(i,j,k,n1,n2,n3)
+     {
+        for ( k = 0; k < n2; k++ )
+        {
+          for ( j = 0; j < n3; j++ )
+          {
+            #pragma omp for schedule(dynamic,chunk) ordered
+            for ( i = 0; i < n1; i++ )
+            {
+              a[i+j*n1] = a[i+j*n1] + b[i+k*n1] * c[k+j*n2];
+            }
+          }
+        }
       }
-    }
-  }
 
   cpu_seconds = cpu_time ( ) - cpu_seconds;
 
